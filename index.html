@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <div class="jumbotron jumbotron-fluid" style="background-color: navy; color: white;">
+            <div class="container">
+                <h1 class="display-20">Weather Dashboard</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="d-flex flex-row">
+            <!--sidebar for search box and cities-->
+            <div id="sidebar" class="w-25" style="border: solid black 1px;">Search by City
+                <!--form for searching by city-->
+                <form id='city-form'>
+                    <!-- Label to type in a box-->
+                    <input type='text' id='city-input'>
+                    <input type='submit' id='select-city' value='Search'>
+                </form>
+                <div>
+                    <!--Unordered list for cities that are typed into search box-->
+                    <ul id="cityList"></ul>
+                    <!--Each city that is searched is turned into a button and added as list items under each-->
+                </div>
+            </div>
+
+            <!--main city weather information-->
+            <div class="flex-grow-1" style="border: solid red 1px;">
+                <div class="container" id="mainInfo">
+                    <div class="date"></div>
+                    <div class="cityName"></div>
+                    <p class="status"></p>
+                    <p class="fahrenheit"></p>
+                    <p class="humidity"></p>
+                    <p class="windSpeed"></p>
+                    <!-- <p class="uvIndex"></p> -->
+                </div>
+            </div>
+            <!-- try to append cards here-->
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="weatherscript.js"></script>
+</body>
+
+</html>
