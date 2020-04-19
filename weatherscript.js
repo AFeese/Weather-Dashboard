@@ -38,13 +38,13 @@ $(document).ready(function () {
             console.log(response.main.humidity + "%");
 
             //Display WindSpeed
-            $(".windSpeed").text("Wind Speed: " + response.wind.speed + "mph");
-            console.log(response.wind.speed + "mph");
+            $(".windSpeed").text("Wind Speed: " + response.wind.speed + " mph");
+            console.log(response.wind.speed + " mph");
 
             //create div for uv index last:
-            var uvIndexDiv = $("<div>").attr("id", "uvIndexDiv");
-            uvIndexDiv.text("UV Index: ");
-            $("#mainInfo").append(uvIndexDiv);
+            // var uvIndexDiv = $("<div>").attr("id", "uvIndexDiv");
+            // uvIndexDiv.text("UV Index: ");
+            // $("#mainInfo").append(uvIndexDiv);
 
             //Locating coordinates matching searched city in first URL in order to find UV index from second ajax query:
             cityLatitude = response.coord.lat;
@@ -53,27 +53,30 @@ $(document).ready(function () {
 
             //Calling to run function that finds matching lat/lon in second url, for uv index:
             findCityCoordinates(cityLatitude, cityLongitude).then(function (response) {
-                var uvIndexP = $("<p>");
-                uvIndexP.text(response.current.uvi);
-                uvIndexP.attr("id", "uvIndexID")
-                console.log(uvIndexP);
-                // $("#uvIndexID").text(uvIndexP);
-                $("#uvIndexDiv").append(uvIndexP);
-                // .attr("class", "uvIndex") 
-                // if (uvIndex <= 2.9){
-                //     uvIndex.addClass("mild");
-                // }
-                // else if (uvIndex >= 3.9 && uvIndex <= 4.9) {
-                //     uvIndex.addClass("moderate");
-                // }
-                // else if (uvIndex >= 5.0) {
-                //     uvIndex.addClass("severe");
-                // }
+                var uvIndex = response.current.uvi;
+                $("#uvIndexID").text("UV Index: " + uvIndex);
+                console.log(uvIndex);
 
-                // console.log(uvIndex);
-                // $(".uvIndex").text(uvIndex);
+                //Trying to run function for spectrum comparison
+                compareUV(uvIndex);
 
             })
+
+            //Trying to make function that compares UV spectrum and changes CSS
+            function compareUV(uvIndex) {
+                //removing previous class so that classes are not adding up
+                $("#uvIndexID").removeClass();
+                
+                if (uvIndex <= 2.9) {
+                    $("#uvIndexID").toggleClass("mild");
+                }
+                else if (uvIndex >= 3.9 && uvIndex <= 4.9) {
+                    $("#uvIndexID").toggleClass("moderate");
+                }
+                else if (uvIndex >= 5.0) {
+                    $("#uvIndexID").toggleClass("severe");
+                }
+            }
         })
 
         //Function that finds matching lat/lon from searched city and makes use of finding UV index from this second call:
@@ -96,6 +99,7 @@ $(document).ready(function () {
         // //Set attribute for linking to storage? 
         // inputCity.attr("a", "href")
 
+        //Appends new city list item to side bar City List under search
         $("#cityList").append('<li>' + inputCity);
 
         //replace function parameter with new variable
@@ -104,7 +108,4 @@ $(document).ready(function () {
     })
 })
 
-            // $('#mainInfo').empty();
-            // $('#mainInfo').append(cityName);
-            // $('#cityNameID').append(currentTemp);
-            // // console.log(cityName, currentTemp);
+
