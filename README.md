@@ -1,3 +1,15 @@
+#Weather Dashboard by Ashley Feese
+Welcome to my weather dashboard. One main page is displayed upon loading with a search box for entry of a desired US city to search. Once submit button is clicked, API returns the city's name as well as correct current date for the day, current weather conditions for that city, including current status, temperature, humidity, wind speed, and UV index. The UV index styling is updated as conditions are one of the following: favorable is green, moderate is yellow, and severe is red. Should another city be searched from the search box, all of the criteria feilds are updated according to the new city. 
+
+---Currently working on: ---
+1.) Cities and API calls need to be saved to local storage so that when the previously searched cities are clicked, updated weather information is displayed again 
+2.) Icon matching current weather condition for the searched city needs to be implemented into the current weather div.
+3.) 5 cards to be displayed below the current weather box, containing weather forecast information for the next 5 days. 
+4.) When entering random text or text that does not match a US city listed in openweatherAPI database, text shows up in UL section under search box. This needs to be modified in order to alert that the input was not found. 
+
+
+
+
 # 06 Server-Side APIs: Weather Dashboard
 
 Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
